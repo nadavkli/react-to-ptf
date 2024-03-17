@@ -7,6 +7,7 @@ robustness, making it an ideal solution for projects requiring PDF generation fr
 ## Features
 
 - **React to PDF Conversion**: Seamlessly convert React components into high-quality PDF files.
+- **Buffer Support**: No need to write to disk; you can also get the PDF as a buffer.
 - **Puppeteer Integration**: Utilizes Puppeteer for reliable and accurate rendering.
 - **TypeScript Support**: Full TypeScript support ensures type safety and developer-friendly usage.
 - **Customizable Options**: Offers a range of customization options for Puppeteer, giving you control over the PDF
@@ -53,7 +54,9 @@ import * as React from 'react';
 You can either define a new React component or import an existing one. Here's an example of a simple component:
 
 ```typescript
-const MyComponent: React.FC = () => <div>Hello PDF World!</div>;
+const MyComponent: React.FC = () => <div>Hello
+PDF
+World! < /div>;
 ```
 
 3. **Convert to PDF:**
@@ -61,8 +64,8 @@ const MyComponent: React.FC = () => <div>Hello PDF World!</div>;
 Call `convertToPdf` with your component and specify the output path for the PDF file:
 
 ```typescript
-convertToPdf(<MyComponent / >, {outputPath: './output.pdf'})
-    .then(() => console.log('PDF created successfully'))
+convertToPdf(<MyComponent/>, {outputPath: './output.pdf'})
+    .then((buffer: Buffer) => console.log('PDF buffer:', buffer))
     .catch(error => console.error('Error creating PDF:', error));
 ```
 
@@ -70,11 +73,11 @@ Ensure that your TypeScript project is properly set up to compile JSX.
 
 ## API
 
-### `convertToPdf(component: React.ReactElement, options: ConvertToPdfOptions): Promise<void>`
+### `convertToPdf(component: React.ReactElement, options: ConvertToPdfOptions): Promise<Buffer>`
 
 - `component`: React component you wish to convert into a PDF.
 - `options`: Configuration options for PDF generation.
-    - `outputPath`: File path to save the generated PDF.
+    - `outputPath`: (optional) File path to save the generated PDF.
     - `puppeteerOptions` (optional): Custom options for Puppeteer.
 
 ## License
