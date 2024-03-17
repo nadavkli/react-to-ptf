@@ -54,9 +54,7 @@ import * as React from 'react';
 You can either define a new React component or import an existing one. Here's an example of a simple component:
 
 ```typescript
-const MyComponent: React.FC = () => <div>Hello
-PDF
-World! < /div>;
+const MyComponent: React.FC = () => <div>Hello PDF World!</div>;
 ```
 
 3. **Convert to PDF:**
@@ -64,7 +62,7 @@ World! < /div>;
 Call `convertToPdf` with your component and specify the output path for the PDF file:
 
 ```typescript
-convertToPdf(<MyComponent/>, {outputPath: './output.pdf'})
+convertToPdf(<MyComponent / >, {outputPath: './output.pdf'})
     .then((buffer: Buffer) => console.log('PDF buffer:', buffer))
     .catch(error => console.error('Error creating PDF:', error));
 ```
